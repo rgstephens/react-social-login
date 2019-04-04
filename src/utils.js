@@ -112,3 +112,4 @@ export const timestampFromNow = (duration) => {
 
   return expiresAt.setSeconds(expiresAt.getSeconds() + duration)
 }
+

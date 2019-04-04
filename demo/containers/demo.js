@@ -28,7 +28,7 @@ export default class Demo extends Component {
   }
 
   onLoginSuccess (user) {
-    console.log(user)
+    console.log("onLoginSuccess, user:", JSON.stringify(user));
 
     this.setState({
       logged: true,
@@ -38,7 +38,7 @@ export default class Demo extends Component {
   }
 
   onLoginFailure (err) {
-    console.error(err)
+    //console.log("onLoginFailure, err:", err);
 
     this.setState({
       logged: false,
@@ -48,6 +48,7 @@ export default class Demo extends Component {
   }
 
   onLogoutSuccess () {
+    console.error("onLogoutSuccess");
     this.setState({
       logged: false,
       currentProvider: '',
@@ -56,6 +57,7 @@ export default class Demo extends Component {
   }
 
   onLogoutFailure (err) {
+    console.error("onLogoutFailure, err:", err);
     console.error(err)
   }
 
@@ -75,28 +77,18 @@ export default class Demo extends Component {
     } else {
       children = [
         <SocialButton
-          provider='facebook'
-          appId={process.env.FB_APP_ID}
-          onLoginSuccess={this.onLoginSuccess}
-          onLoginFailure={this.onLoginFailure}
-          onLogoutSuccess={this.onLogoutSuccess}
-          getInstance={this.setNodeRef.bind(this, 'facebook')}
-          key={'facebook'}
-        >
-          Login with Facebook
-        </SocialButton>,
-        <SocialButton
-          provider='google'
-          appId='844845104372-h8htjngp1os1tb79nksc54dq7tko4r8n.apps.googleusercontent.com'
-          onLoginSuccess={this.onLoginSuccess}
-          onLoginFailure={this.onLoginFailure}
-          onLogoutSuccess={this.onLogoutSuccess}
-          onLogoutFailure={this.onLogoutFailure}
-          getInstance={this.setNodeRef.bind(this, 'google')}
-          key={'google'}
-        >
-          Login with Google
-        </SocialButton>,
+        provider='yahoo'
+        appId='dj0yJmk9cUhhUWRaTWhyNWFHJnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTUy'
+        redirect="http://teamtrack.site"
+        onLoginSuccess={this.onLoginSuccess}
+        onLoginFailure={this.onLoginFailure}
+        onLogoutSuccess={this.onLogoutSuccess}
+        onLogoutFailure={this.onLogoutFailure}
+        getInstance={this.setNodeRef.bind(this, 'yahoo')}
+        key={'yahoo'}
+      >
+        Login with Yahoo
+      </SocialButton>,
         <SocialButton
           autoCleanUri
           provider='instagram'
@@ -109,19 +101,8 @@ export default class Demo extends Component {
           key={'instagram'}
         >
           Login with Instagram
-        </SocialButton>,
-        <SocialButton
-          provider='linkedin'
-          appId='7775kne2guetd0'
-          onLoginSuccess={this.onLoginSuccess}
-          onLoginFailure={this.onLoginFailure}
-          onLogoutSuccess={this.onLogoutSuccess}
-          getInstance={this.setNodeRef.bind(this, 'linkedin')}
-          key={'linkedin'}
-        >
-          Login with LinkedIn
         </SocialButton>
-      ]
+    ]
 
       // Amazon only supports HTTPS
       if (window.location.protocol === 'https:') {
@@ -139,14 +120,14 @@ export default class Demo extends Component {
           </SocialButton>
         )
       } else {
-        // We don’t use HTTPS because of Gatekeeper, but it can be enabled if Gatekeeper is served over HTTPS
+        // We donâ€™t use HTTPS because of Gatekeeper, but it can be enabled if Gatekeeper is served over HTTPS
         children.push(
           <SocialButton
             autoCleanUri
             provider='github'
             gatekeeper='http://localhost:9999'
-            appId='8a7c2edb2e602d969839'
-            redirect='http://localhost:8080'
+            appId='fc065f8f39ad34be8f09'
+            redirect='http://teamtrack.com'
             onLoginSuccess={this.onLoginSuccess}
             onLoginFailure={this.onLoginFailure}
             onLogoutSuccess={this.onLogoutSuccess}
@@ -162,3 +143,4 @@ export default class Demo extends Component {
     return children
   }
 }
+

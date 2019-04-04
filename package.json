@@ -21,7 +21,7 @@
   },
   "betterScripts": {
     "start": {
-      "command": "cd demo && webpack-dev-server --https --progress --colors && cd ..",
+      "command": "cd demo && webpack-dev-server --https --host 0.0.0.0 --progress --colors && cd ..",
       "env": {
         "NODE_ENV": "development",
         "FB_APP_ID": "309479849514684",
